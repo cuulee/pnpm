@@ -43,7 +43,7 @@ dependencies:
   retry: 0.12.0
   signal-exit: 3.0.2
   strip-color: 0.1.0
-  supi: 0.16.5
+  supi: 0.16.6
   text-table: 0.2.0
   tree-kill: 1.2.0
   update-notifier: 2.5.0
@@ -62,7 +62,7 @@ devDependencies:
   '@types/mz': 0.0.32
   '@types/node': 9.6.5
   '@types/nopt': 3.0.29
-  '@types/ramda': 0.25.22
+  '@types/ramda': 0.25.23
   '@types/semver': 5.5.0
   '@types/tape': 4.2.32
   '@types/update-notifier': 2.2.0
@@ -428,7 +428,7 @@ packages:
       '@pnpm/package-requester': 0.8.6
       '@pnpm/pkgid-to-filename': 1.0.0
       '@pnpm/types': 1.7.0
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       dependency-path: 1.2.1
       graph-sequencer: 2.0.0
       p-limit: 1.2.0
@@ -437,7 +437,7 @@ packages:
       pnpm-shrinkwrap: 6.3.2
       ramda: 0.25.0
       read-package-json: 2.0.13
-      supi: 0.16.5
+      supi: 0.16.6
       symlink-dir: 1.1.2
       util.promisify: 1.0.0
     dev: false
@@ -466,7 +466,7 @@ packages:
       '@pnpm/package-bins': 1.0.0
       '@pnpm/types': 1.7.0
       '@types/mz': 0.0.32
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       '@zkochan/cmd-shim': 2.2.4
       arr-flatten: 1.1.0
       is-windows: 1.0.2
@@ -812,9 +812,9 @@ packages:
     dev: true
     resolution:
       integrity: sha512-ApUp/Eo/D4lQ/8yI+dlNVz1LslAdvycBbKmsr77sw2Ovymyj0nYowS+xuTChzfGdnEdcqBTPM2OtKmvTFKIXPA==
-  /@types/ramda/0.25.22:
+  /@types/ramda/0.25.23:
     resolution:
-      integrity: sha512-p0iNFhF6/eCdiTL5Ga6aBws/SBwEbHHzrRi7yR5QWe/7Yh6C511RztExK61gCBDs8zCvUzYxUUwah90l+KKe0A==
+      integrity: sha512-JYovPjyl7dLbYSXLjnqZlQCyw2NJ2+X5W9JrJLiQh6BMkB9KdfZ8eqBaK2kPlesj+wA6VLEra0UCx1R9ZkpmZQ==
   /@types/rc/0.0.1:
     dev: false
     resolution:
@@ -4966,7 +4966,7 @@ packages:
       '@types/load-json-file': 2.0.7
       '@types/mz': 0.0.32
       '@types/node': 9.6.5
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       encode-registry: 1.1.0
       load-json-file: 4.0.0
       mkdirp-promise: 5.0.1
@@ -5177,7 +5177,7 @@ packages:
   /pkgs-graph/2.0.0:
     dependencies:
       '@types/node': 9.6.5
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       '@types/semver': 5.5.0
       npm-package-arg: 6.1.0
       ramda: 0.25.0
@@ -5191,7 +5191,7 @@ packages:
     dependencies:
       '@types/common-tags': 1.4.0
       '@types/node': 9.6.5
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       '@types/semver': 5.5.0
       '@types/strip-ansi': 3.0.0
       ansi-diff: 1.1.0
@@ -5240,7 +5240,7 @@ packages:
     dependencies:
       '@types/archy': 0.0.31
       '@types/node': 9.6.5
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       archy: 1.0.0
       chalk: 2.4.0
       dependencies-hierarchy: 2.0.2
@@ -5268,7 +5268,7 @@ packages:
       '@pnpm/resolver-base': 1.0.0
       '@types/js-yaml': 3.11.1
       '@types/node': 9.6.5
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       dependency-path: 1.2.1
       get-npm-tarball-url: 2.0.1
       js-yaml: 3.11.0
@@ -6383,7 +6383,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-PFMZQukIwml8DsNEhYwobHygpgo=
-  /supi/0.16.5:
+  /supi/0.16.6:
     dependencies:
       '@pnpm/check-package': 1.0.0
       '@pnpm/fs-locker': 1.0.1
@@ -6404,7 +6404,7 @@ packages:
       '@types/nopt': 3.0.29
       '@types/npm': 2.0.29
       '@types/p-series': 1.0.1
-      '@types/ramda': 0.25.22
+      '@types/ramda': 0.25.23
       '@types/rc': 0.0.1
       '@types/semver': 5.5.0
       '@zkochan/npm-package-arg': 1.0.0
@@ -6449,7 +6449,7 @@ packages:
     peerDependencies:
       '@pnpm/logger': ^1.0.0
     resolution:
-      integrity: sha512-wAYWRCgpoA3X40SFh4ZGkP1PkgL0dt1AO5f9qr4GMBSe87/K0pyrz12oUeUFAkVQFfSgrmT4mhsQyFvO4TdHLA==
+      integrity: sha512-A90KRrVD7Gmr/afq/MVQ/8KSSfQpBdu9lApIkm1LJnQ9mvOxUa6oS4ihiVSQ6gBBxe65c6VNcdCAoL4+he1vOQ==
   /supports-color/2.0.0:
     dev: true
     engines:
@@ -7284,7 +7284,7 @@ specifiers:
   sepia: ^2.0.2
   signal-exit: ^3.0.2
   strip-color: ^0.1.0
-  supi: ^0.16.5
+  supi: ^0.16.6
   tape: ^4.6.3
   tape-promise: ^2.0.1
   text-table: ^0.2.0
