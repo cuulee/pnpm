@@ -243,6 +243,41 @@ test('recursive linking/unlinking', async (t: tape.Test) => {
   t.equal(isPositiveShr.registry, 'http://localhost:4873/', 'is-positive has correct registry specified in shrinkwrap.yaml')
 })
 
+test['skip']('recursive linking should unlink package if it does not satisfy the range anymore', async (t: tape.Test) => {
+  const projects = prepare(t, [
+    {
+      name: 'project-1',
+      version: '1.0.0',
+      devDependencies: {
+        'is-positive': '1.0.0',
+      },
+    },
+    {
+      name: 'is-positive',
+      version: '1.0.0',
+      dependencies: {
+        'is-negative': '1.0.0',
+      },
+    },
+  ])
+
+  await execPnpm('recursive', 'link', '--reporter', 'append-only')
+
+  await projects['project-1'].writePackageJson({
+    name: 'project-1',
+    version: '1.0.0',
+    devDependencies: {
+      'is-positive': '2.0.0',
+    },
+  })
+
+  await execPnpm('recursive', 'link', '--reporter', 'append-only')
+
+  const project1Shr = await projects['project-1'].loadShrinkwrap()
+  t.equal(project1Shr.devDependencies['is-positive'], '2.0.0')
+  t.ok(project1Shr.packages['/is-positive/2.0.0'])
+})
+
 test('running `pnpm recursive` on a subset of packages', async t => {
   const projects = prepare(t, [
     {
