@@ -67,6 +67,7 @@ devDependencies:
   '@types/mkdirp': 0.5.2
   '@types/sinon': 5.0.0
   '@types/tape': 4.2.32
+  '@types/tempy': 0.1.0
   '@zkochan/husky': 0.0.0
   anonymous-npm-registry-client: 0.1.2
   caw: 2.0.1
@@ -88,6 +89,7 @@ devDependencies:
   sinon: 5.0.10
   tape: 4.9.0
   tape-promise: 3.0.0
+  tempy: 0.2.1
   ts-node: 6.0.5
   tslint: 5.10.0
   typescript: 2.9.1
@@ -571,6 +573,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-xil0KO5wkPoixdBWGIGolPv9dekf6dVkjjJLAFYchfKcd4DICou67rgGCIO7wAh3i5Ff/6j9IDgZz+GU9cMaqQ==
+  /@types/tempy/0.1.0:
+    dev: true
+    resolution:
+      integrity: sha512-2qeSxI2bMucW58Jsj8jrBXZxobtcKkvO44AvJzKGaD8+m/3KRuBqeKitJ5U6sqy3a9tFsqhzsxMkqR4Wcl6AmQ==
   /@types/touch/3.1.0:
     dependencies:
       '@types/node': 10.1.2
@@ -4339,6 +4345,21 @@ packages:
     dev: false
     resolution:
       integrity: sha1-jk0qJWwOIYXGsYrWlK7JaLg8sdE=
+  /temp-dir/1.0.0:
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-CnwOom06Oa+n4OvqnB/AvE2qAR0=
+  /tempy/0.2.1:
+    dependencies:
+      temp-dir: 1.0.0
+      unique-string: 1.0.0
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-LB83o9bfZGrntdqPuRdanIVCPReam9SOZKW0fOy5I9X3A854GGWi0tjCqoXEk84XIEYBc/x9Hq3EFop/H5wJaw==
   /text-encoding/0.6.4:
     dev: true
     resolution:
@@ -4830,6 +4851,7 @@ specifiers:
   '@types/semver': ^5.3.30
   '@types/sinon': ^5.0.0
   '@types/tape': ^4.2.30
+  '@types/tempy': ^0.1.0
   '@zkochan/husky': ^0.0.0
   '@zkochan/npm-package-arg': ^1.0.0
   anonymous-npm-registry-client: ^0.1.2
@@ -4882,6 +4904,7 @@ specifiers:
   symlink-dir: ^1.1.0
   tape: ^4.8.0
   tape-promise: ^3.0.0
+  tempy: ^0.2.1
   ts-node: ^6.0.0
   tslint: ^5.4.2
   typescript: ^2.9.1
