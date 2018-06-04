@@ -12,6 +12,8 @@ coverage
 
 fixtures
 .tmp
+.tmp_supi
+.tmp_pnpm
 _docpress
 
 lib
