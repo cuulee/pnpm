@@ -4,9 +4,12 @@ import path = require('path')
 import {Test} from 'tape'
 import tempy = require('tempy')
 import writePkg = require('write-pkg')
+import os = require('os')
+import uniqueString = require('unique-string')
 
 export function tempDir (t: Test) {
-  const tmpDir = tempy.directory()
+  const tmpDir = path.join(process.env['APPVEYOR'] ? path.dirname(os.tmpdir()) : os.tmpdir(), uniqueString())
+  mkdirp.sync(tmpDir)
 
   t.pass(`create testing dir ${tmpDir}`)
 

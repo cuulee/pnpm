@@ -114,6 +114,7 @@
     "ts-node": "^6.0.0",
     "tslint": "^5.4.2",
     "typescript": "^2.9.1",
+    "unique-string": "^1.0.0",
     "write-json-file": "^2.3.0",
     "write-pkg": "^3.1.0",
     "write-yaml-file": "^1.0.0"
@@ -162,7 +163,7 @@
     "lint": "tslint -c tslint.json --project .",
     "pnpm-registry-mock": "pnpm-registry-mock",
     "test:tap": "ts-node test --type-check",
-    "pretest:e2e": "rimraf ../.tmp/ && rimraf node_modules/.bin/pnpm && pnpm-registry-mock prepare",
+    "pretest:e2e": "rimraf node_modules/.bin/pnpm && pnpm-registry-mock prepare",
     "test:e2e": "pnpm link . && npm-run-all -p -r pnpm-registry-mock test:tap",
     "test:e2e-with-preview": "preview --skip-prepublishOnly && npm-run-all -p -r pnpm-registry-mock test:tap",
     "test": "npm run lint && npm run tsc && npm run test:e2e",
