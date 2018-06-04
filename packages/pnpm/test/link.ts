@@ -27,7 +27,7 @@ test('linking multiple packages', async (t: tape.Test) => {
   await execPnpm('link')
 
   process.chdir('..')
-  process.chdir('project')
+  process.chdir('_')
 
   await execPnpm('link', 'linked-foo', '../linked-bar')
 

@@ -99,7 +99,7 @@ test('install from any location via the --prefix flag', async (t) => {
 
   process.chdir('..')
 
-  await execPnpm('install', '--prefix', 'project')
+  await execPnpm('install', '--prefix', '_')
 
   await project.has('is-positive')
 })

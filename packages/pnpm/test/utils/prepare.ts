@@ -16,7 +16,7 @@ export function tempDir (t: Test) {
 }
 
 export default function prepare (t: Test, pkg?: Object | Object[], pkgTmpPath?: string): any {
-  pkgTmpPath = pkgTmpPath || tempDir(t)
+  pkgTmpPath = pkgTmpPath || path.join(tempDir(t), '_')
 
   if (Array.isArray(pkg)) {
     const dirname = path.dirname(pkgTmpPath)

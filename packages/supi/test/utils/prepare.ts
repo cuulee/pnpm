@@ -10,7 +10,8 @@ export default function prepare (t: Test, pkg?: object) {
   process.env.NPM_CONFIG_STORE_PATH = '../.store'
   process.env.NPM_CONFIG_SILENT = 'true'
 
-  const pkgTmpPath = tempy.directory()
+  const pkgTmpPath = path.join(tempy.directory(), '_')
+  mkdirp.sync(pkgTmpPath)
   let pkgJson = {name: 'project', version: '0.0.0', ...pkg}
   writePkg.sync(pkgTmpPath, pkgJson)
   process.chdir(pkgTmpPath)

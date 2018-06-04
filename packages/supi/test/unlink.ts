@@ -45,9 +45,9 @@ test('unlink 1 package that exists in package.json', async (t: tape.Test) => {
     }),
   ])
 
-  await link(['is-subdir', 'is-positive'], path.join('project', 'node_modules'), await testDefaults({prefix: path.resolve('project')}))
+  await link(['is-subdir', 'is-positive'], path.join('_', 'node_modules'), await testDefaults({prefix: path.resolve('_')}))
 
-  process.chdir('project')
+  process.chdir('_')
 
   await install(await testDefaults())
 
@@ -71,10 +71,10 @@ test("don't update package when unlinking", async (t: tape.Test) => {
     version: '100.0.0',
   })
 
-  await link(['foo'], path.join('project', 'node_modules'), opts)
+  await link(['foo'], path.join('_', 'node_modules'), opts)
   await addDistTag('foo', '100.1.0', 'latest')
 
-  process.chdir('project')
+  process.chdir('_')
   await unlinkPkgs(['foo'], opts)
 
   t.equal(project.requireModule('foo/package.json').version, '100.0.0', 'foo not updated after unlink')
@@ -95,10 +95,10 @@ test("don't update package when unlinking. Initial link is done on a package w/o
     version: '100.0.0',
   })
 
-  await link(['foo'], path.join('project', 'node_modules'), opts)
+  await link(['foo'], path.join('_', 'node_modules'), opts)
   await addDistTag('foo', '100.1.0', 'latest')
 
-  process.chdir('project')
+  process.chdir('_')
   await unlinkPkgs(['foo'], opts)
 
   t.equal(project.requireModule('foo/package.json').version, '100.1.0', 'latest foo is installed')
@@ -128,9 +128,9 @@ test('unlink 2 packages. One of them exists in package.json', async (t: tape.Tes
     }),
   ])
 
-  await link(['is-subdir', 'is-positive'], path.join('project', 'node_modules'), opts)
+  await link(['is-subdir', 'is-positive'], path.join('_', 'node_modules'), opts)
 
-  process.chdir('project')
+  process.chdir('_')
   await unlinkPkgs(['is-subdir', 'is-positive'], opts)
 
   t.equal(typeof project.requireModule('is-subdir'), 'function', 'is-subdir installed after unlinked')
@@ -161,7 +161,7 @@ test('unlink all packages', async (t: tape.Test) => {
     }),
   ])
 
-  await link(['is-subdir', 'logger'], path.join('project', 'node_modules'), opts)
+  await link(['is-subdir', 'logger'], path.join('_', 'node_modules'), opts)
 
   await unlink(opts)
 
