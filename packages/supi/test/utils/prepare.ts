@@ -5,25 +5,16 @@ import {Test} from 'tape'
 import tempy = require('tempy')
 import writePkg = require('write-pkg')
 
-// the testing folder should be outside of the project to avoid lookup in the project's node_modules
-const tmpPath = tempy.directory()
-mkdirp.sync(tmpPath)
-
-let dirNumber = 0
-
 export default function prepare (t: Test, pkg?: object) {
   process.env.NPM_CONFIG_REGISTRY = 'http://localhost:4873/'
   process.env.NPM_CONFIG_STORE_PATH = '../.store'
   process.env.NPM_CONFIG_SILENT = 'true'
 
-  dirNumber++
-  const dirname = dirNumber.toString()
-  const pkgTmpPath = path.join(tmpPath, dirname, 'project')
-  mkdirp.sync(pkgTmpPath)
+  const pkgTmpPath = tempy.directory()
   let pkgJson = {name: 'project', version: '0.0.0', ...pkg}
   writePkg.sync(pkgTmpPath, pkgJson)
   process.chdir(pkgTmpPath)
-  t.pass(`create testing package ${dirname}`)
+  t.pass(`create testing package ${pkgTmpPath}`)
 
   return {
     ...assertProject(t, pkgTmpPath),
