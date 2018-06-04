@@ -5,19 +5,10 @@ import {Test} from 'tape'
 import tempy = require('tempy')
 import writePkg = require('write-pkg')
 
-// the testing folder should be outside of the project to avoid lookup in the project's node_modules
-const tmpPath = tempy.directory()
-mkdirp.sync(tmpPath)
-
-let dirNumber = 0
-
 export function tempDir (t: Test) {
-  dirNumber++
-  const dirname = dirNumber.toString()
-  const tmpDir = path.join(tmpPath, dirname)
-  mkdirp.sync(tmpDir)
+  const tmpDir = tempy.directory()
 
-  t.pass(`create testing dir ${dirname}`)
+  t.pass(`create testing dir ${tmpDir}`)
 
   process.chdir(tmpDir)
 
@@ -25,7 +16,7 @@ export function tempDir (t: Test) {
 }
 
 export default function prepare (t: Test, pkg?: Object | Object[], pkgTmpPath?: string): any {
-  pkgTmpPath = pkgTmpPath || path.join(tempDir(t), 'project')
+  pkgTmpPath = pkgTmpPath || tempDir(t)
 
   if (Array.isArray(pkg)) {
     const dirname = path.dirname(pkgTmpPath)
