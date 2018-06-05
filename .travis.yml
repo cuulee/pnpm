@@ -19,7 +19,7 @@ script:
   - set -e # Fail on first error
   - /bin/bash lint-commits.sh
   - ./tools/node_modules/.bin/commitlint --from=$TRAVIS_COMMIT
-  - npm t
+  - pnpm recursive 1 test --reporter append-only
   - set +e
 env:
   global:
