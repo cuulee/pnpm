@@ -18,7 +18,7 @@ test('listing global packages', async (t: tape.Test) => {
 
   const global = path.resolve('global')
 
-  process.env.APPDATA = global
+  if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
   await execPnpm('install', '-g', 'is-positive@3.1.0')
@@ -41,7 +41,7 @@ test('listing global packages installed with independent-leaves = true', async (
 
   const global = path.resolve('global')
 
-  process.env.APPDATA = global
+  if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
   await execPnpm('install', '-g', '--independent-leaves', 'is-positive@3.1.0')

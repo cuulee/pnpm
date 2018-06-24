@@ -25,7 +25,7 @@ test('pnpm root -g', async (t: tape.Test) => {
 
   const global = path.resolve('global')
 
-  process.env.APPDATA = global
+  if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
   const result = execPnpmSync('root', '-g')
@@ -44,7 +44,7 @@ test('pnpm root -g --independent-leaves', async (t: tape.Test) => {
 
   const global = path.resolve('global')
 
-  process.env.APPDATA = global
+  if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
   const result = execPnpmSync('root', '-g', '--independent-leaves')

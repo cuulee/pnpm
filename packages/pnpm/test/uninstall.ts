@@ -38,7 +38,7 @@ test('uninstall global package with its bin files', async (t: tape.Test) => {
   const global = path.resolve('global')
   const globalBin = isWindows() ? path.join(global, 'npm') : path.join(global, 'bin')
 
-  process.env.APPDATA = global
+  if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
   await execPnpm('install', '-g', 'sh-hello-world@1.0.1')

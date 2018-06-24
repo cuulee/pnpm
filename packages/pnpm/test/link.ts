@@ -40,7 +40,7 @@ test('link global bin', async function (t: tape.Test) {
   process.chdir('..')
 
   const global = path.resolve('global')
-  process.env.APPDATA = global
+  if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
   await writePkg('package-with-bin', {name: 'package-with-bin', version: '1.0.0', bin: 'bin.js'})
