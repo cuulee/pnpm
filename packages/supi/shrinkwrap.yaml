@@ -83,7 +83,6 @@ devDependencies:
   package-preview: 1.0.6
   path-name: 1.0.0
   pnpm-registry-mock: 2.1.0
-  read-pkg: 3.0.0
   rimraf: 2.6.2
   sepia: 2.0.2
   sinon: 6.0.1
@@ -5069,7 +5068,6 @@ specifiers:
   pnpm-registry-mock: ^2.1.0
   pnpm-shrinkwrap: ^6.5.0
   ramda: ^0.25.0
-  read-pkg: ^3.0.0
   remove-all-except-outer-links: ^1.0.0
   replace-string: ^1.1.0
   resolve-link-target: ^1.0.1

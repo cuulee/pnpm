@@ -1,5 +1,4 @@
 import path = require('path')
-import readPkg = require('read-pkg')
 import {installPkgs} from 'supi'
 import tape = require('tape')
 import promisifyTape from 'tape-promise'

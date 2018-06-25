@@ -1,7 +1,6 @@
 import ncpCB = require('ncp')
 import path = require('path')
 import exists = require('path-exists')
-import readPkg = require('read-pkg')
 import {
   installPkgs,
   rebuild,

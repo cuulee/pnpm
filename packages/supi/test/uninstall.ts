@@ -1,3 +1,4 @@
+import {fromDir as readPkgFromDir} from '@pnpm/read-package-json'
 import tape = require('tape')
 import promisifyTape from 'tape-promise'
 const test = promisifyTape(tape)
@@ -5,7 +6,6 @@ import existsSymlink = require('exists-link')
 import ncpCB = require('ncp')
 import path = require('path')
 import exists = require('path-exists')
-import readPkg = require('read-pkg')
 import sinon = require('sinon')
 import {
   installPkgs,
@@ -73,7 +73,7 @@ test('uninstall package with no dependencies', async (t: tape.Test) => {
 
   await project.hasNot('is-negative')
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   t.equal(pkgJson.dependencies, undefined, 'is-negative has been removed from dependencies')
 })
 
@@ -86,7 +86,7 @@ test('uninstall scoped package', async (t) => {
 
   await project.hasNot('@zkochan/logger')
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   t.equal(pkgJson.dependencies, undefined, '@zkochan/logger has been removed from dependencies')
 })
 
@@ -99,7 +99,7 @@ test('uninstall tarball dependency', async (t: tape.Test) => {
 
   await project.hasNot('is-array')
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   t.equal(pkgJson.dependencies, undefined, 'is-array has been removed from dependencies')
 })
 
@@ -122,7 +122,7 @@ test('uninstall package with dependencies and do not touch other deps', async (t
   await project.storeHas('is-negative', '2.1.0')
   await project.has('is-negative')
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   t.deepEqual(pkgJson.dependencies, {'is-negative': '^2.1.0'}, 'camelcase-keys has been removed from dependencies')
 
   const shr = await project.loadShrinkwrap()

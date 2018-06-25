@@ -1,10 +1,7 @@
+import {fromDir as readPkgFromDir} from '@pnpm/read-package-json'
 import tape = require('tape')
 import promisifyTape from 'tape-promise'
 const test = promisifyTape(tape)
-import existsSymlink = require('exists-link')
-import path = require('path')
-import exists = require('path-exists')
-import readPkg = require('read-pkg')
 import {installPkgs, prune} from 'supi'
 import writePkg = require('write-pkg')
 import {prepare, testDefaults} from './utils'
@@ -17,10 +14,14 @@ test('prune removes extraneous packages', async (t: tape.Test) => {
   await installPkgs(['fnumber@0.1.0'], await testDefaults({saveOptional: true}))
   await installPkgs(['is-positive@2.0.0', '@zkochan/logger@0.1.0'], await testDefaults())
 
-  const pkg = await readPkg()
+  const pkg = await readPkgFromDir(process.cwd())
 
-  delete pkg.dependencies['is-positive']
-  delete pkg.dependencies['@zkochan/logger']
+  if (pkg && pkg.dependencies) {
+    delete pkg.dependencies['is-positive']
+    delete pkg.dependencies['@zkochan/logger']
+  } else {
+    t.fail('package does not contain dependencies field')
+  }
 
   await writePkg(pkg)
 

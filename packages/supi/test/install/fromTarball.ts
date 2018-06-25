@@ -1,4 +1,4 @@
-import readPkg = require('read-pkg')
+import {fromDir as readPkgFromDir} from '@pnpm/read-package-json'
 import {installPkgs} from 'supi'
 import tape = require('tape')
 import promisifyTape from 'tape-promise'
@@ -19,7 +19,7 @@ test('tarball from npm registry', async (t) => {
 
   await project.storeHas('registry.npmjs.org/is-array/1.0.1')
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   t.deepEqual(pkgJson.dependencies, {'is-array': 'http://registry.npmjs.org/is-array/-/is-array-1.0.1.tgz'}, 'has been added to dependencies in package.json')
 })
 

@@ -1,3 +1,4 @@
+import {fromDir as readPkgFromDir} from '@pnpm/read-package-json'
 import 'sepia'
 import tape = require('tape')
 import promisifyTape from 'tape-promise'
@@ -10,7 +11,6 @@ import semver = require('semver')
 const spawnSync = crossSpawn.sync
 import isCI = require('is-ci')
 import loadJsonFile = require('load-json-file')
-import readPkg = require('read-pkg')
 import rimraf = require('rimraf-then')
 import {
   addDistTag,
@@ -231,8 +231,8 @@ test('update a package when installing with a dist-tag', async (t: tape.Test) =>
   await project.has('dep-of-pkg-with-1-dep')
   await project.storeHas('dep-of-pkg-with-1-dep', '100.1.0')
 
-  const pkg = await readPkg()
-  t.equal(pkg.devDependencies['dep-of-pkg-with-1-dep'], '^100.1.0')
+  const pkg = await readPkgFromDir(process.cwd())
+  t.equal(pkg.devDependencies && pkg.devDependencies['dep-of-pkg-with-1-dep'], '^100.1.0')
 })
 
 test('scoped modules with versions (@rstacruz/tap-spec@4.1.1)', async (t) => {
@@ -857,7 +857,7 @@ test('create a package.json if there is none', async (t: tape.Test) => {
 
   await installPkgs(['dep-of-pkg-with-1-dep@100.1.0'], await testDefaults())
 
-  t.deepEqual(await readPkg({normalize: false}), {
+  t.deepEqual(await readPkgFromDir(process.cwd()), {
     dependencies: {
       'dep-of-pkg-with-1-dep': '^100.1.0',
     },

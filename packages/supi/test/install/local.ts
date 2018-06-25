@@ -1,8 +1,8 @@
+import {fromDir as readPkgFromDir} from '@pnpm/read-package-json'
 import fs = require('mz/fs')
 import ncpCB = require('ncp')
 import normalizePath = require('normalize-path')
 import path = require('path')
-import readPkg = require('read-pkg')
 import {install, installPkgs} from 'supi'
 import symlinkDir = require('symlink-dir')
 import tape = require('tape')
@@ -34,7 +34,7 @@ test('local file', async (t: tape.Test) => {
 
   await installPkgs(['file:../local-pkg'], await testDefaults())
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   const expectedSpecs = {'local-pkg': `link:..${path.sep}local-pkg`}
   t.deepEqual(pkgJson.dependencies, expectedSpecs, 'local-pkg has been added to dependencies')
 
@@ -61,7 +61,7 @@ test('local file via link:', async (t: tape.Test) => {
 
   await installPkgs(['link:../local-pkg'], await testDefaults())
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   const expectedSpecs = {'local-pkg': `link:..${path.sep}local-pkg`}
   t.deepEqual(pkgJson.dependencies, expectedSpecs, 'local-pkg has been added to dependencies')
 
@@ -90,7 +90,7 @@ test('local file with symlinked node_modules', async (t: tape.Test) => {
 
   await installPkgs(['file:../local-pkg'], await testDefaults())
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   const expectedSpecs = {'local-pkg': `link:..${path.sep}local-pkg`}
   t.deepEqual(pkgJson.dependencies, expectedSpecs, 'local-pkg has been added to dependencies')
 
@@ -128,7 +128,7 @@ test('tarball local package', async (t: tape.Test) => {
 
   t.equal(m(), 'tar-pkg', 'tarPkg() is available')
 
-  const pkgJson = await readPkg()
+  const pkgJson = await readPkgFromDir(process.cwd())
   const pkgSpec = `file:${normalizePath(pathToLocalPkg('tar-pkg/tar-pkg-1.0.0.tgz'))}`
   t.deepEqual(pkgJson.dependencies, {'tar-pkg': pkgSpec}, 'has been added to dependencies in package.json')
 
