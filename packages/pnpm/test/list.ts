@@ -21,7 +21,7 @@ test('listing global packages', async (t: tape.Test) => {
   if (process.env.APPDATA) process.env.APPDATA = global
   process.env.NPM_CONFIG_PREFIX = global
 
-  await execPnpm('install', '-g', 'is-positive@3.1.0')
+  await execPnpm('install', '-g', 'rimraf@2.6.2')
 
   const result = execPnpmSync('list', '-g')
 
@@ -32,7 +32,7 @@ test('listing global packages', async (t: tape.Test) => {
     : path.join(global, 'pnpm-global', '1')
   t.equal(result.stdout.toString(), stripIndent`
     pnpm-global-pkg@1.0.0 ${globalPrefix}
-    └── is-positive@3.1.0
+    └── rimraf@2.6.2
   ` + '\n\n')
 })
 
