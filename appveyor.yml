@@ -8,7 +8,7 @@ install:
   - set PNPM_VERSION=2.9.0
   - curl -L https://unpkg.com/@pnpm/self-installer | node
   # Testing whether pnpm can upgrade itself
-  - pnpm i -g pnpm@next
+  - pnpm i -g pnpm@next --reporter ndjson
   - pnpm -v
   - pnpm recursive link --no-lock
 matrix:
